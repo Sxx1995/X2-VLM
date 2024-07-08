@@ -68,7 +68,7 @@ class grounding_dataset_bbox(Dataset):
         self.mode = mode
 
         if self.mode == 'train':
-            self.refer = REFER(config['refcoco_data'], 'refcoco+', 'unc')
+            # self.refer = REFER(config['refcoco_data'], 'refcoco+', 'unc')
             self.img_ids = {}
             n = 0
             for ann in self.ann:
@@ -97,7 +97,7 @@ class grounding_dataset_bbox(Dataset):
 
         if self.mode == 'train':
             # random crop
-            x, y, w, h = self.refer.refToAnn[ann['ref_id']]['bbox']
+            x, y, w, h = ann['bbox']
             assert (x >= 0) and (y >= 0) and (x + w <= W) and (y + h <= H) and (w > 0) and (
                     h > 0), "elem invalid"
 
